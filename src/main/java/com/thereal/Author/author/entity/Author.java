@@ -9,6 +9,7 @@ import javax.persistence.*;
 @GenericGenerator(name = "gen", strategy = "increment")
 public class Author {
 
+
     @Id
     @Column(name = "athr_id")// id attribute should be stored in a column called athr_id
     @GeneratedValue(generator = "gen")
