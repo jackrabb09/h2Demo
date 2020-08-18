@@ -25,7 +25,7 @@ public class AuthorAPI {
     //Create
     @PostMapping(value ="/addAuthor")
     ResponseEntity<Object> addAuthor(@RequestBody Author newAuthor) throws Exception{
-
+//no changes
         Author aut = authorRepository.save(newAuthor);
         //return "Author " + newAuthor.getName() + " created";
 
