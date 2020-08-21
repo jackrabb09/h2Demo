@@ -20,9 +20,9 @@ public class DemoApplication {
         int id = Integer.parseInt(sc.next());
         System.out.println("Enter name");
         String name = sc.next();
-        System.out.println("Enter new Address");
-        String address = sc.next();
 
+       // System.out.println("Enter new Address");
+        String address = sc.next();
         author.setId(id);
         author.setName(name);
         author.setAddress(address);
