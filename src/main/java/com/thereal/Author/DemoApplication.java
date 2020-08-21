@@ -21,7 +21,7 @@ public class DemoApplication {
         System.out.println("Enter name");
         String name = sc.next();
 
-       // System.out.println("Enter new Address");
+       System.out.println("Enter new Address");
         String address = sc.next();
         author.setId(id);
         author.setName(name);
