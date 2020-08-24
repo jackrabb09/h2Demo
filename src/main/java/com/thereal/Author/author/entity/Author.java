@@ -3,6 +3,7 @@ package com.thereal.Author.author.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "author_details")//Author object should be stored in a "authors" table
@@ -15,6 +16,7 @@ public class Author {
     @GeneratedValue(generator = "gen")
     private int id;
 
+    @Size(min = 2)
     @Column(name = "athr_nm")
     private String name;
 

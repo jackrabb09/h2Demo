@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.Iterator;
 import java.util.List;
@@ -18,13 +19,14 @@ import java.util.Optional;
 @RestController(value = "author")
 public class AuthorAPI {
 
+    //nipsey
     @Autowired
     AuthorRepository authorRepository;
 
     //Create
     @PostMapping(value ="/addAuthor")
-    ResponseEntity<Object> addAuthor(@RequestBody Author newAuthor) throws Exception{
-
+    ResponseEntity<Object> addAuthor(@Valid @RequestBody Author newAuthor) throws Exception{
+//no changes
         Author aut = authorRepository.save(newAuthor);
         //return "Author " + newAuthor.getName() + " created";
 
