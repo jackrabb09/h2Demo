@@ -8,7 +8,8 @@ import java.util.List;
 
 @Component
 public class AuthorDaoService {
-
+//git
+    //nousns
     private static List<Author> authors = new ArrayList<>();
 
     private static int usersCount = 3;

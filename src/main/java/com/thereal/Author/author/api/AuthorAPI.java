@@ -50,7 +50,7 @@ public class AuthorAPI {
         Author aut = authorRepository.findById(id).get();
 
         if (aut == null){
-            throw new UserNotFoundException("id- " + id);
+            throw new UserNotFoundException("id: " + id);
         }
         return aut;
         //return get() author
