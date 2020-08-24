@@ -1,5 +1,6 @@
 package com.thereal.Author.exceptions;
 
+import org.apache.tomcat.jni.Address;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,5 +20,12 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),request.getDescription(false));
 
         return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<Object> handleAllExceptions(UserNotFoundException ex, WebRequest request){
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),request.getDescription(false));
+
+        return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 }
