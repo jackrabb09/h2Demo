@@ -3,6 +3,8 @@ package com.thereal.Author.author.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,10 +18,11 @@ public class Author {
     @GeneratedValue(generator = "gen")
     private int id;
 
-    @Size(min = 2)
+    @Size(min = 2,message = "Name should have at least 2 characters")
     @Column(name = "athr_nm")
     private String name;
 
+    @NotNull(message = "Address field must not be empty")
     @Column(name ="athr_addr")
     private String address;
 
@@ -49,10 +52,15 @@ public class Author {
     }
 
     public String getAddress() {
+//
         return address;
     }
 
     public void setAddress(String address) {
+        if (address.isEmpty()){
+            this.address ="Invalid Address";
+
+        }
         this.address = address;
     }
 

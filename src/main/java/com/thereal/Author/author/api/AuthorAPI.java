@@ -1,11 +1,15 @@
 package com.thereal.Author.author.api;
 
+//import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import com.thereal.Author.author.entity.Author;
 import com.thereal.Author.author.repository.AuthorRepository;
 import com.thereal.Author.exceptions.UserNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+//import org.springframework.hateoas.Resource;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
@@ -19,7 +23,6 @@ import java.util.Optional;
 @RestController(value = "author")
 public class AuthorAPI {
 
-    //nipsey
     @Autowired
     AuthorRepository authorRepository;
 
@@ -27,9 +30,9 @@ public class AuthorAPI {
     @PostMapping(value ="/addAuthor")
     ResponseEntity<Object> addAuthor(@Valid @RequestBody Author newAuthor) throws Exception{
 //no changes
+
         Author aut = authorRepository.save(newAuthor);
         //return "Author " + newAuthor.getName() + " created";
-
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(aut.getId()).toUri();
        return ResponseEntity.created(location).build();
     }
@@ -49,11 +52,17 @@ public class AuthorAPI {
     public Author retrieveAuthor(@PathVariable int id){
         Author aut = authorRepository.findById(id).get();
 
-        if (aut == null){
+        if (aut == null) {
             throw new UserNotFoundException("id: " + id);
         }
+        //Resource<Author> authorResource = new Resource<Author>(aut);
+
+//        //Enables us to create links from methods
+//        ControllerLinkBuilder linkTo =
+//        linkTo(methodOn(this.getClass()).getAuthors());
+//        authorResource.add(linkTo.withRel("All-Users"));
+//        return authorResource;
         return aut;
-        //return get() author
     }
     //updating
     @PutMapping(value = "/updateAuthor/{id}")
@@ -74,7 +83,6 @@ public class AuthorAPI {
     //Delete
     @DeleteMapping(value = "/deleteAuthor/{id}")
     void deleteAuthor(@PathVariable int id, Author author){
-
 
 //        Iterator<Author> iterator = author.
         //Delete author by ID(Primary Key)
